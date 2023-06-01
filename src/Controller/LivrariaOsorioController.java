@@ -39,7 +39,6 @@ public class LivrariaOsorioController extends BibliotecaController {
           && usuario1.getEmail() != null && usuario1.getTelefone() != null) {
         List<Usuario> usuarios = livrariaosorio.get(0).getListaUsuarios();
         usuarios.add(usuario1);
-
         livrariaosorio.get(0).setListaUsuarios(usuarios);
       }
 

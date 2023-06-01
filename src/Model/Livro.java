@@ -1,6 +1,4 @@
 package Model;
-
-
 public class Livro {
 
     private  static  Integer sequencia = 1;
