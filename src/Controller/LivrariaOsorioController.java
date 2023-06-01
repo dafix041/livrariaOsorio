@@ -1,6 +1,5 @@
 package Controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import Model.LivrariaOsorio;
@@ -13,19 +12,22 @@ public class LivrariaOsorioController extends BibliotecaController {
 
   @Override
   public Livro buscarLivroPorCodigo(List<Livro> listaLivros, Integer codigo) {
-    for (Livro livro : listaLivros) {
-      if (livro.getCodigo().equals(codigo)) {
-        return livro;
+    for (Livro livro1 : listaLivros) {
+      if (livro1.getCodigo().equals(codigo)) {
+        return livro1;
       }
     }
     return null;
 
-    return null;
   }
 
   @Override
-  public Livro buscarLivroPorTitulo(String titulo) {
-
+  public Livro buscarLivroPorTitulo(String titulo, List<Livro> listaLivros) {
+    for (Livro livro1 : listaLivros) {
+      if (livro1.getTitulo().equals(titulo)) {
+        return livro1;
+      }
+    }
     return null;
   }
 
