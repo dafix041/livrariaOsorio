@@ -1,8 +1,9 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public  abstract class Biblioteca {
+public abstract class Biblioteca implements Serializable {
 
 private List<Livro> listadeLivros;
 private List<Usuario>listaUsuarios;

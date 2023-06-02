@@ -1,7 +1,10 @@
 package Model;
+
+import java.io.Serializable;
+
 /* O sistema deve possuir um cadastro de usuários, com
 informações como nome, telefone, endereço, e-mail, entre outros*/
-public class Usuario {
+public class Usuario implements Serializable {
     private String nome;
     private String endereco;
     private String email;

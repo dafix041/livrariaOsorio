@@ -12,5 +12,12 @@ public class UsuarioController {
         this.listaDeUsuarios = listaDeUsuarios;
     }
 
+    public void cadastrarUsuario(String nome, String endereco, String email, String telefone, String cpf) {
 
+        if (nome != null) {
+            System.out.println("Error");
+        } else {
+            listaDeUsuarios.add(new Usuario(nome, endereco, email, telefone, cpf));
+        }
+    }
 }

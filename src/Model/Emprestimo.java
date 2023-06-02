@@ -1,6 +1,8 @@
 package Model;
 
-public class Emprestimo {
+import java.io.Serializable;
+
+public class Emprestimo implements Serializable {
     private String dataEmprestimo;
     private String dataDevolucao;
     public Emprestimo(String dataEmprestimo, String dataDevolucao) {

@@ -1,5 +1,8 @@
 package Model;
-public class Livro {
+
+import java.io.Serializable;
+
+public class Livro implements Serializable {
 
     private  static  Integer sequencia = 1;
     private String titulo;

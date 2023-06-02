@@ -8,7 +8,12 @@ import Model.Usuario;
 
 public class LivrariaOsorioController extends BibliotecaController {
 
-  List<LivrariaOsorio> livrariaosorio;
+  private LivrariaOsorio livrariaosorio;
+
+  public LivrariaOsorioController(List<Livro> listadeLivros, List<Usuario> listaUsuarios) {
+
+    this.livrariaosorio = new LivrariaOsorio(listadeLivros, listaUsuarios);
+  }
 
   @Override
   public Livro buscarLivroPorCodigo(List<Livro> listaLivros, Integer codigo) {
@@ -22,8 +27,9 @@ public class LivrariaOsorioController extends BibliotecaController {
   }
 
   @Override
-  public Livro buscarLivroPorTitulo(String titulo, List<Livro> listaLivros) {
-    for (Livro livro1 : listaLivros) {
+  public Livro buscarLivroPorTitulo(String titulo) {
+    List<Livro> testando = livrariaosorio.getListadeLivros();
+    for (Livro livro1 : testando) {
       if (livro1.getTitulo().equals(titulo)) {
         return livro1;
       }
@@ -32,33 +38,29 @@ public class LivrariaOsorioController extends BibliotecaController {
   }
 
   @Override
-  public void cadastrarUsuario(List<Usuario> listaDeUsuarios) {
+  public void cadastrarLivro(Livro livrao) {
 
-    for (Usuario usuario1 : listaDeUsuarios) {
-      if (usuario1.getNome() != null && usuario1.getCpf() != null && usuario1.getEndereco() != null
-          && usuario1.getEmail() != null && usuario1.getTelefone() != null) {
-        List<Usuario> usuarios = livrariaosorio.get(0).getListaUsuarios();
-        usuarios.add(usuario1);
-        livrariaosorio.get(0).setListaUsuarios(usuarios);
-      }
+    if (livrao != null) {
 
+    } else {
+      livrariaosorio.getListadeLivros().add(livrao);
     }
+
+    
+    // classe salvar para salvar para salvar controller isso no main banco código
+
+    // dev recebe lista do usuario, aumenta biblioteca qtd livros e apaga lista
+    // usuario
+
+    // instanciar uma lista vazia lista.new lista
+
+    // interface serializable classes herdadas recebem
 
   }
 
   @Override
-  public void cadastrarLivro(List<Livro> listaLivros) {
-
-    for (Livro livro2 : listaLivros) {
-      if (livro2.getTitulo() != null && livro2.getAutor() != null && livro2.getGenero() != null
-          && livro2.getAnoDePublicacao() != null && livro2.getNumeroDeExemplares() != null) {
-        List<Livro> livros = livrariaosorio.get(0).getListadeLivros();
-        listaLivros.add(livro2);
-        livrariaosorio.get(0).setListadeLivros(livros);
-      }
-
-    }
-
+  public String toString() {
+    return "LivrariaOsorioController [livrariaosorio=" + livrariaosorio + "]";
   }
 
 }
