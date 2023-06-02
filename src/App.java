@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Controller.LivrariaOsorioController;
 import Controller.LivroController;
+import Controller.Salvar;
 import Model.Biblioteca;
 import Model.LivrariaOsorio;
 import Model.Livro;
@@ -41,7 +42,16 @@ public class App {
         teste.buscarLivroPorTitulo("Harry potter e a Pedra Filosofal");
         System.out.println(teste);  
 
-        
+        if (Salvar.lerArquivo() != null) {
+            //nesta linha chamamos o método estático da classe salvar e tentamos iniciar o banco
+            usuario = (Usuario) Salvar.lerArquivo(); 
+        }else {
+            //Caso o retorno seja vazio adicionamos a conta corrente ao banco, garantindo que a conta não será inserida duas vezes
+            System.out.println("Erro");
+        }
+        Salvar.salvarArquivo(usuario);
+
+
         }
 
         public static void solicitarDados(){
