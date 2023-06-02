@@ -8,7 +8,7 @@ import Model.Usuario;
 
 public class LivrariaOsorioController extends BibliotecaController {
 
-  private LivrariaOsorio livrariaosorio;
+  private static LivrariaOsorio livrariaosorio;
 
   public LivrariaOsorioController(List<Livro> listadeLivros, List<Usuario> listaUsuarios) {
 
@@ -28,7 +28,7 @@ public class LivrariaOsorioController extends BibliotecaController {
   }
 
   @Override
-  public Livro buscarLivroPorTitulo(String titulo) {
+  public  Livro buscarLivroPorTitulo(String titulo) {
     List<Livro> testando = livrariaosorio.getListadeLivros();
     for (Livro livro1 : testando) {
       if (livro1.getTitulo().equals(titulo)) {

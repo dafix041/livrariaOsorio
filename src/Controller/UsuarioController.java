@@ -6,7 +6,7 @@ import java.util.List;
 import Model.Usuario;
 
 public class UsuarioController {
-    private List<Usuario> listaDeUsuarios;
+    private static List<Usuario> listaDeUsuarios;
 
     public UsuarioController(List<Usuario> listaDeUsuarios) {
         this.listaDeUsuarios = listaDeUsuarios;

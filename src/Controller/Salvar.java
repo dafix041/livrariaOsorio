@@ -8,7 +8,7 @@ import java.io.ObjectOutputStream;
 
 public abstract class Salvar {
     //Define uma variável que recebe um objeto do Tipo File que contém o caminho do arquivo
-    private static File arquivo = new File("livrariaOsorio/src/log/banco");
+    private static File arquivo = new File("livrariaOsorio/src/log/livraria");
     //Este método recebe um Objeto genérico, podendo receber qualquer tipo de objeto
     public static void salvarArquivo(Object obj){
         try {
