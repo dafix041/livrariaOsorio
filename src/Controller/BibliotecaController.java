@@ -8,7 +8,7 @@ import Model.Usuario;
 
 public abstract class BibliotecaController implements Serializable {
 
-    public abstract Livro buscarLivroPorCodigo( List<Livro> listaLivros, Integer codigo);
+    public abstract Livro buscarLivroPorCodigo(Integer codigo);
 
     public abstract Livro buscarLivroPorTitulo(String titulo);
 

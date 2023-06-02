@@ -16,8 +16,9 @@ public class LivrariaOsorioController extends BibliotecaController {
   }
 
   @Override
-  public Livro buscarLivroPorCodigo(List<Livro> listaLivros, Integer codigo) {
-    for (Livro livro1 : listaLivros) {
+  public Livro buscarLivroPorCodigo(Integer codigo) {
+    List<Livro> livroes = livrariaosorio.getListadeLivros();
+    for (Livro livro1 : livroes) {
       if (livro1.getCodigo().equals(codigo)) {
         return livro1;
       }
