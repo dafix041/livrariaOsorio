@@ -11,14 +11,17 @@ import Model.Usuario;
 public class EmprestimoController implements Serializable {
     private List<Emprestimo> ListadeEmprestimos;
 
+    
     public EmprestimoController(List<Emprestimo> listadeEmprestimos) {
         ListadeEmprestimos = listadeEmprestimos;
     }
+
 
     @Override
     public String toString() {
         return "EmprestimoController [ListadeEmprestimos=" + ListadeEmprestimos + "]";
     }
+
 
     public String emprestarLivro(Usuario usuario, List<Livro> listaparaEmprestar) {
         int quantidadeLivros = ListadeEmprestimos.get(0).getListadeLivro().size();
@@ -47,12 +50,27 @@ public class EmprestimoController implements Serializable {
         return "Erro 4";
     }
 
+  
+    public Usuario devolucaoDeLivros(Usuario usuario, List<Livro> livroDevolvidos){
+        for(int i = 0; i < ListadeEmprestimos.size(); i++){
+            if(ListadeEmprestimos.get(i).getUsuario().equals(usuario)){
+                if(livroDevolvidos.get(i).getCodigo() == ListadeEmprestimos.get(i).getListadeLivro().get(i).getCodigo()){
+                    int estoqueAtual = livroDevolvidos.get(i).getNumeroDeExemplares();
+                    ListadeEmprestimos.get(i).getListadeLivro().get(i).setNumeroDeExemplares(estoqueAtual + 1);
+                    ListadeEmprestimos.get(i).setDataDevolucao(LocalDate.now());
+                }
+            }
+        }
+        return usuario;
+    }
+
+
     public List<Emprestimo> getListadeEmprestimos() {
         return ListadeEmprestimos;
     }
 
+
     public void setListadeEmprestimos(List<Emprestimo> listadeEmprestimos) {
         ListadeEmprestimos = listadeEmprestimos;
     }
-
 }
