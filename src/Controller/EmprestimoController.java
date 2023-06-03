@@ -23,54 +23,53 @@ public class EmprestimoController implements Serializable {
     }
 
 
-    public String emprestarLivro(Usuario usuario, List<Livro> listaparaEmprestar) {
-        int quantidadeLivros = ListadeEmprestimos.get(0).getListadeLivro().size();
+    public String emprestimoDeLivro(Usuario usuario, List<Livro> livro){
         for (Emprestimo emprestimo : ListadeEmprestimos) {
-            if (emprestimo.getBiblioteca().getListaUsuarios().contains(usuario)) {
-                if (emprestimo.getUsuario().getId() == usuario.getId() && quantidadeLivros > 0) {
-                    if (emprestimo.getBiblioteca().getListadeLivros().get(quantidadeLivros)
-                            .getNumeroDeExemplares() > 0) {
-                        LocalDate inicioEmprestimo = LocalDate.now();
-                        int exemplares = emprestimo.getBiblioteca().getListadeLivros().get(quantidadeLivros)
-                                .getNumeroDeExemplares();
-                        Emprestimo emprestimo2 = new Emprestimo(inicioEmprestimo, inicioEmprestimo.plusDays(7),
-                                emprestimo.getBiblioteca(), usuario, listaparaEmprestar);
-                        ListadeEmprestimos.add(emprestimo2);
-                        return "Emprestimo realiazado com sucesso";
+            if(emprestimo.getBiblioteca().getListaUsuarios().contains(usuario)){
+                System.out.println(emprestimo.getUsuario().equals(usuario));
+                System.out.println(emprestimo.getDataDevolucao().isAfter(LocalDate.now()));
 
+
+                if(emprestimo.getUsuario().equals(usuario)) {
+                    if(emprestimo.getDataDevolucao().isAfter(LocalDate.now())) {
+                    for (Livro livro2 : livro) {
+                        if(livro2.getNumeroDeExemplares() > 0){
+                            int quantidadeDeLivros = livro2.getNumeroDeExemplares() - 1;
+                            LocalDate dataAtual = LocalDate.now();
+                            livro2.setNumeroDeExemplares(quantidadeDeLivros);
+                            Emprestimo emprestimo2 = new Emprestimo(dataAtual, dataAtual.plusDays(7), usuario, livro, emprestimo.getBiblioteca());
+                            ListadeEmprestimos.add(emprestimo2);
+                            return "O Emprestimo foi registrado no sistema!";
+                            }
+                        }
                     }
-                    return "Erro 1";
+                }else{
+                    return "Você tem um emprestimo pendente !";
                 }
-                return "Erro 2";
-
+            }else {
+                return "Você não está cadastrado em nenhuma biblioteca";
             }
-            return "Erro 3";
-
         }
-        return "Erro 4";
+        return "Por favor, tente novamente mais tarde!";
     }
+
 
   
-    public Usuario devolucaoDeLivros(Usuario usuario, List<Livro> livroDevolvidos){
-        for(int i = 0; i < ListadeEmprestimos.size(); i++){
-            if(ListadeEmprestimos.get(i).getUsuario().equals(usuario)){
-                if(livroDevolvidos.get(i).getCodigo() == ListadeEmprestimos.get(i).getListadeLivro().get(i).getCodigo()){
-                    int estoqueAtual = livroDevolvidos.get(i).getNumeroDeExemplares();
-                    ListadeEmprestimos.get(i).getListadeLivro().get(i).setNumeroDeExemplares(estoqueAtual + 1);
-                    ListadeEmprestimos.get(i).setDataDevolucao(LocalDate.now());
+    public Usuario devolucaoDeLivros(Usuario usuario, List<Livro> livroDevolvidos) {
+        try {
+            for (int i = 0; i < ListadeEmprestimos.size(); i++) {
+                if (ListadeEmprestimos.get(i).getUsuario().equals(usuario)) {
+                    if (livroDevolvidos.get(i).getCodigo() == livroDevolvidos.get(i).getTitulo().get(i).getId()) {
+                        int estoqueAtual = livroDevolvidos.get(i).getNumeroDeExemplares();
+                        ListadeEmprestimos.get(i).getListadeLivro().get(i).setNumeroDeExemplares(estoqueAtual + 1);
+                        livroDevolvidos.get(i).setDataDevolucao(LocalDate.now());
+                    }
                 }
             }
+            return usuario;
+        } catch (Exception e) {
+            System.out.println("Ocorreu na devolução: " + e.getMessage());
+            return null; 
         }
-        return usuario;
-    }
-
-
-    public List<Emprestimo> getListadeEmprestimos() {
-        return ListadeEmprestimos;
-    }
-
-
-    public void setListadeEmprestimos(List<Emprestimo> listadeEmprestimos) {
-        ListadeEmprestimos = listadeEmprestimos;
     }
 }

@@ -21,6 +21,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
 
+
         Livro livro1 = new Livro("Harry potter e a Pedra Filosofal", "JK Rowling", "Fantasia", "1997", 23) {
         };
 
@@ -39,10 +40,8 @@ public class App {
         livraria.add(biblioteca);
 
         LivrariaOsorioController teste = new LivrariaOsorioController(new ArrayList<Livro>(), usuarios);
-
-        // teste funcionando
-        // teste.buscarLivroPorTitulo("Harry potter e a Pedra Filosofal");
-        // System.out.println(livro);//
+        UsuarioController testando = new UsuarioController(new ArrayList<Usuario>() );
+  
 
         while (menu)
 
@@ -59,8 +58,18 @@ public class App {
                             "7 - Sair.\n");
 
             int op = in.nextInt();
+            if (in.hasNextInt()) {
+                op = in.nextInt();
+            } else {
+                System.out.println(".");
+                in.next(); 
+                continue; 
+            }
+
             switch (op) {
                 case 1:
+
+                
                     List<Livro> listaLivros = new ArrayList<>();
                     Scanner scanner = new Scanner(System.in);
 
@@ -76,6 +85,10 @@ public class App {
                     System.out.println("Digite o  ano de publicacao:");
                     String anoPublicacao = scanner.nextLine();
 
+                    System.out.println("Digite o numero de exemplares");
+                    int numeroDeExemplares = scanner.nextInt();
+
+                    teste.cadastrarLivro(livro1);
                     scanner.close();
                     break;
 
@@ -94,9 +107,6 @@ public class App {
 
                     System.out.println("Digite seu cpf");
                     String cpf = scanner2.nextLine();
-                    LivrariaOsorioController livrariaController = new LivrariaOsorioController();
-
-
                 
                     break;
                 case 3:
@@ -106,10 +116,12 @@ public class App {
                     String tituloBusca = scanner3.nextLine();
                     LivrariaOsorioController livrariaOsorioController = new LivrariaOsorioController();
                     livrariaOsorioController.buscarLivroPorTitulo(tituloBusca);
-
+                    System.out.println(livro1);
                     break;
                 case 4:
                     System.out.println("Emprestar livro");
+
+
                     break;
                 case 5:
                     System.out.println("Devolver livro");

@@ -8,10 +8,10 @@ import Model.Usuario;
 
 public class LivrariaOsorioController extends BibliotecaController {
 
-  private  LivrariaOsorio livrariaosorio;
+  private static LivrariaOsorio livrariaosorio;
 
   public LivrariaOsorioController(){
-    
+
   }
   public LivrariaOsorioController(List<Livro> listadeLivros, List<Usuario> listaUsuarios) {
 
@@ -38,6 +38,7 @@ public class LivrariaOsorioController extends BibliotecaController {
         System.out.println("passei aqui");
         return livro1;
       }
+    System.out.println("Algo deu errado");
     }
     return null;
   }

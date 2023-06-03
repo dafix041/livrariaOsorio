@@ -11,13 +11,13 @@ public class Emprestimo implements Serializable {
     private Usuario usuario;
     private List<Livro>listadeLivro;
 
-    public Emprestimo(LocalDate dataEmprestimo, LocalDate dataDevolucao, Biblioteca biblioteca, Usuario usuario,
-            List<Livro> listadeLivro) {
+    public Emprestimo(LocalDate dataEmprestimo, LocalDate dataDevolucao, Usuario usuario2, List<Livro> livro,
+            Biblioteca biblioteca2) {
         this.dataEmprestimo = dataEmprestimo;
         this.dataDevolucao = dataDevolucao;
         this.biblioteca = biblioteca;
         this.usuario = usuario;
-        this.listadeLivro = listadeLivro;
+        this.listadeLivro =listadeLivro;
     }
 
     public LocalDate getDataEmprestimo() {
@@ -32,7 +32,7 @@ public class Emprestimo implements Serializable {
         return dataDevolucao;
     }
 
-    public void setDataDevolucao(LocalDate dataDevolucao) {
+    public  void setDataDevolucao(LocalDate dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 
