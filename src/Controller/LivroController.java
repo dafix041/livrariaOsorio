@@ -11,5 +11,10 @@ public class LivroController {
         this.listadeLivros = listadeLivros;
     }
 
+    @Override
+    public String toString() {
+        return "LivroController [listadeLivros=" + listadeLivros + "]";
+    }
+
    
 }

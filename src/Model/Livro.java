@@ -12,7 +12,7 @@ public class Livro implements Serializable {
     private String anoDePublicacao;
     private Integer numeroDeExemplares;
 
-    public Livro(String titulo, String autor, String genero, Integer codigo, String anoDePublicacao,
+    public Livro(String titulo, String autor, String genero, String anoDePublicacao,
             Integer numeroDeExemplares) {
         this.titulo = titulo;
         this.autor = autor;

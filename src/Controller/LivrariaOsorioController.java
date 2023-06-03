@@ -8,8 +8,11 @@ import Model.Usuario;
 
 public class LivrariaOsorioController extends BibliotecaController {
 
-  private static LivrariaOsorio livrariaosorio;
+  private  LivrariaOsorio livrariaosorio;
 
+  public LivrariaOsorioController(){
+    
+  }
   public LivrariaOsorioController(List<Livro> listadeLivros, List<Usuario> listaUsuarios) {
 
     this.livrariaosorio = new LivrariaOsorio(listadeLivros, listaUsuarios);
@@ -31,7 +34,8 @@ public class LivrariaOsorioController extends BibliotecaController {
   public  Livro buscarLivroPorTitulo(String titulo) {
     List<Livro> testando = livrariaosorio.getListadeLivros();
     for (Livro livro1 : testando) {
-      if (livro1.getTitulo().equals(titulo)) {
+      if (livro1.getTitulo() == titulo) {
+        System.out.println("passei aqui");
         return livro1;
       }
     }
@@ -48,15 +52,6 @@ public class LivrariaOsorioController extends BibliotecaController {
     }
 
     
-    // classe salvar para salvar para salvar controller isso no main banco código
-
-    // dev recebe lista do usuario, aumenta biblioteca qtd livros e apaga lista
-    // usuario
-
-    // instanciar uma lista vazia lista.new lista
-
-    // interface serializable classes herdadas recebem
-
   }
 
   @Override

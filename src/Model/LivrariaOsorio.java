@@ -9,10 +9,6 @@ public class LivrariaOsorio extends Biblioteca {
         super(listadeLivros, listaUsuarios);
     }
 
-    public Biblioteca get(int i) {
-        return null;
-    }
-
 
     }
 
